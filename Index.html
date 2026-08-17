@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>College Portal</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    min-height:100vh;
+    color:white;
+
+    background:
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(124,58,237,.35),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(236,72,153,.25),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #04040a,
+            #10091f,
+            #050509
+        );
+
+    overflow-x:hidden;
+}
+
+header{
+    text-align:center;
+    padding:80px 20px 45px;
+}
+
+.badge{
+    display:inline-block;
+    padding:9px 18px;
+    border-radius:50px;
+
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.15);
+
+    color:#d8b4fe;
+    letter-spacing:2px;
+    font-size:13px;
+
+    margin-bottom:25px;
+}
+
+h1{
+    font-size:clamp(50px,10vw,90px);
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+header p{
+    margin-top:18px;
+    color:#aaa8b8;
+    font-size:18px;
+}
+
+nav{
+    width:92%;
+    max-width:900px;
+    margin:auto;
+    padding:12px;
+
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:8px;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.14);
+
+    border-radius:50px;
+
+    backdrop-filter:blur(20px);
+}
+
+nav a{
+    color:#ddd6fe;
+    text-decoration:none;
+
+    padding:12px 20px;
+
+    border-radius:30px;
+
+    transition:.3s;
+}
+
+nav a:hover{
+    color:white;
+
+    background:rgba(139,92,246,.25);
+
+    transform:translateY(-3px);
+}
+
+main{
+    padding:70px 20px;
+}
+
+.hero{
+    max-width:850px;
+    margin:auto;
+
+    padding:60px 30px;
+
+    text-align:center;
+
+    border-radius:35px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.11),
+            rgba(255,255,255,.035)
+        );
+
+    border:1px solid rgba(255,255,255,.16);
+
+    backdrop-filter:blur(25px);
+
+    box-shadow:
+        0 35px 100px rgba(0,0,0,.45);
+}
+
+.hero h2{
+    font-size:clamp(38px,7vw,65px);
+
+    margin-bottom:20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #d8b4fe,
+            #f9a8d4,
+            #ffffff
+        );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    color:#c8c5d2;
+
+    font-size:18px;
+
+    line-height:1.9;
+}
+
+.buttons{
+    margin-top:30px;
+
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+
+    gap:14px;
+}
+
+.button{
+    display:inline-block;
+
+    padding:15px 30px;
+
+    border-radius:50px;
+
+    color:white;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #c026d3,
+            #ec4899
+        );
+
+    transition:.4s;
+}
+
+.button:hover{
+    transform:
+        translateY(-5px)
+        scale(1.04);
+}
+
+.secondary{
+    background:rgba(255,255,255,.08);
+
+    border:
+        1px solid rgba(255,255,255,.15);
+}
+
+.features{
+    max-width:900px;
+
+    margin:40px auto 0;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:18px;
+}
+
+.feature{
+    padding:25px;
+
+    text-align:center;
+
+    border-radius:22px;
+
+    background:
+        rgba(255,255,255,.05);
+
+    border:
+        1px solid rgba(255,255,255,.10);
+
+    transition:.4s;
+}
+
+.feature:hover{
+    transform:translateY(-7px);
+
+    background:
+        rgba(255,255,255,.08);
+}
+
+.feature h3{
+    margin-bottom:10px;
+}
+
+.feature p{
+    color:#9693a3;
+
+    line-height:1.6;
+
+    font-size:14px;
+}
+
+footer{
+    text-align:center;
+
+    padding:35px;
+
+    color:#777384;
+
+    font-size:14px;
+}
+
+@media(max-width:650px){
+
+    h1{
+        font-size:52px;
+    }
+
+    nav{
+        border-radius:25px;
+    }
+
+    nav a{
+        padding:10px 14px;
+    }
+
+    .features{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="badge">
+        WELCOME
+    </div>
+
+    <h1 id="collegeName">
+        College Portal
+    </h1>
+
+    <p id="tagline">
+        A smarter place to learn, explore and grow.
+    </p>
+
+</header>
+
+
+<nav>
+
+    <a href="index.html">
+        Home
+    </a>
+
+    <a href="about.html">
+        About
+    </a>
+
+    <a href="courses.html">
+        Courses
+    </a>
+
+    <a href="contact.html">
+        Contact
+    </a>
+
+</nav>
+
+
+<main>
+
+<section class="hero">
+
+    <div class="badge">
+        WELCOME TO THE FUTURE
+    </div>
+
+    <h2 id="heroTitle">
+        Build Your Future
+    </h2>
+
+    <p id="heroText">
+        Discover knowledge, explore opportunities,
+        and take the next step toward your future.
+    </p>
+
+    <div class="buttons">
+
+        <a
+            class="button"
+            href="courses.html"
+        >
+            Explore Courses →
+        </a>
+
+        <a
+            class="button secondary"
+            href="about.html"
+        >
+            Discover More
+        </a>
+
+    </div>
+
+</section>
+
+
+<section class="features">
+
+    <div class="feature">
+
+        <h3>
+            🎓 Quality Education
+        </h3>
+
+        <p>
+            Learn with a modern
+            and student-focused approach.
+        </p>
+
+    </div>
+
+
+    <div class="feature">
+
+        <h3>
+            🚀 Future Ready
+        </h3>
+
+        <p>
+            Build skills that prepare
+            you for tomorrow.
+        </p>
+
+    </div>
+
+
+    <div class="feature">
+
+        <h3>
+            ✨ New Opportunities
+        </h3>
+
+        <p>
+            Explore courses and
+            discover your potential.
+        </p>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+    © 2026
+    <span id="footerName">
+        College Portal
+    </span>
+
+</footer>
+
+
+<script>
+
+const saved =
+    localStorage.getItem("collegeData");
+
+if(saved){
+
+    const data =
+        JSON.parse(saved);
+
+    document.getElementById(
+        "collegeName"
+    ).textContent =
+        data.collegeName;
+
+    document.getElementById(
+        "footerName"
+    ).textContent =
+        data.collegeName;
+
+    document.getElementById(
+        "tagline"
+    ).textContent =
+        data.tagline;
+
+    document.getElementById(
+        "heroTitle"
+    ).textContent =
+        data.heroTitle;
+
+    document.getElementById(
+        "heroText"
+    ).textContent =
+        data.heroText;
+}
+
+</script>
+
+</body>
+</html>

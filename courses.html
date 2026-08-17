@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Courses - College Portal</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    min-height:100vh;
+    color:white;
+
+    background:
+        radial-gradient(circle at 10% 15%,rgba(124,58,237,.35),transparent 30%),
+        radial-gradient(circle at 90% 80%,rgba(236,72,153,.25),transparent 30%),
+        linear-gradient(135deg,#04040a,#10091f,#050509);
+
+    overflow-x:hidden;
+}
+
+header{
+    text-align:center;
+    padding:80px 20px 50px;
+}
+
+.badge{
+    display:inline-block;
+    padding:9px 18px;
+    border-radius:50px;
+
+    color:#d8b4fe;
+    background:rgba(255,255,255,.07);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    letter-spacing:2px;
+    font-size:13px;
+
+    margin-bottom:25px;
+}
+
+h1{
+    font-size:clamp(50px,10vw,90px);
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+nav{
+    width:92%;
+    max-width:900px;
+    margin:auto;
+    padding:12px;
+
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:8px;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.14);
+
+    border-radius:50px;
+
+    backdrop-filter:blur(20px);
+}
+
+nav a{
+    color:#ddd6fe;
+    text-decoration:none;
+
+    padding:12px 20px;
+
+    border-radius:30px;
+
+    transition:.3s;
+}
+
+nav a:hover{
+    color:white;
+
+    background:rgba(139,92,246,.25);
+
+    transform:translateY(-3px);
+}
+
+main{
+    padding:60px 20px 90px;
+}
+
+.courses{
+    max-width:1050px;
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:24px;
+}
+
+.course{
+    position:relative;
+
+    padding:38px 30px;
+
+    min-height:250px;
+
+    border-radius:28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.11),
+            rgba(255,255,255,.035)
+        );
+
+    border:1px solid rgba(255,255,255,.14);
+
+    backdrop-filter:blur(25px);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.35);
+
+    overflow:hidden;
+
+    transition:.45s;
+}
+
+.course::before{
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    background:#8b5cf6;
+
+    filter:blur(70px);
+
+    opacity:0;
+
+    right:-80px;
+    top:-80px;
+
+    transition:.45s;
+}
+
+.course:hover::before{
+    opacity:.35;
+}
+
+.course:hover{
+    transform:
+        translateY(-10px)
+        scale(1.02);
+
+    border-color:
+        rgba(216,180,254,.35);
+
+    box-shadow:
+        0 35px 100px rgba(124,58,237,.22);
+}
+
+.number{
+    position:relative;
+    z-index:1;
+
+    color:#c084fc;
+
+    font-size:13px;
+
+    letter-spacing:3px;
+
+    margin-bottom:20px;
+}
+
+.course h2{
+    position:relative;
+    z-index:1;
+
+    font-size:38px;
+
+    margin-bottom:14px;
+}
+
+.course p{
+    position:relative;
+    z-index:1;
+
+    color:#aaa8b8;
+
+    font-size:16px;
+
+    line-height:1.8;
+}
+
+footer{
+    text-align:center;
+
+    padding:35px;
+
+    color:#777384;
+
+    font-size:14px;
+}
+
+@media(max-width:700px){
+
+    h1{
+        font-size:52px;
+    }
+
+    nav{
+        border-radius:25px;
+    }
+
+    nav a{
+        padding:10px 14px;
+    }
+
+    .courses{
+        grid-template-columns:1fr;
+    }
+
+    .course{
+        min-height:auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="badge">
+        ACADEMIC PROGRAMS
+    </div>
+
+    <h1>
+        Our Courses
+    </h1>
+
+</header>
+
+
+<nav>
+
+    <a href="index.html">
+        Home
+    </a>
+
+    <a href="about.html">
+        About
+    </a>
+
+    <a href="courses.html">
+        Courses
+    </a>
+
+    <a href="contact.html">
+        Contact
+    </a>
+
+</nav>
+
+
+<main>
+
+<div class="courses">
+
+
+<div class="course">
+
+    <div class="number">
+        01 / PROGRAM
+    </div>
+
+    <h2 id="course1Name">
+        BCA
+    </h2>
+
+    <p id="course1Text">
+        Computer applications,
+        programming and modern technology.
+    </p>
+
+</div>
+
+
+<div class="course">
+
+    <div class="number">
+        02 / PROGRAM
+    </div>
+
+    <h2 id="course2Name">
+        BBA
+    </h2>
+
+    <p id="course2Text">
+        Business, management and
+        entrepreneurial skills.
+    </p>
+
+</div>
+
+
+<div class="course">
+
+    <div class="number">
+        03 / PROGRAM
+    </div>
+
+    <h2 id="course3Name">
+        B.Sc
+    </h2>
+
+    <p id="course3Text">
+        Science, research, technology
+        and analytical thinking.
+    </p>
+
+</div>
+
+
+<div class="course">
+
+    <div class="number">
+        04 / PROGRAM
+    </div>
+
+    <h2 id="course4Name">
+        B.Com
+    </h2>
+
+    <p id="course4Text">
+        Accounting, finance, commerce
+        and business.
+    </p>
+
+</div>
+
+
+</div>
+
+</main>
+
+
+<footer>
+
+    © 2026 College Portal
+
+</footer>
+
+
+<script>
+
+const saved =
+    localStorage.getItem("collegeData");
+
+if(saved){
+
+    const data =
+        JSON.parse(saved);
+
+    for(let i=1;i<=4;i++){
+
+        const name =
+            document.getElementById(
+                "course"+i+"Name"
+            );
+
+        const text =
+            document.getElementById(
+                "course"+i+"Text"
+            );
+
+        if(name){
+            name.textContent =
+                data["course"+i+"Name"];
+        }
+
+        if(text){
+            text.textContent =
+                data["course"+i+"Text"];
+        }
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

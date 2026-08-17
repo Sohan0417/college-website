@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Admin Login</title>
+
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    font-family:Arial,sans-serif;
+
+    color:white;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(124,58,237,.35),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(236,72,153,.25),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #04040a,
+            #10091f,
+            #050509
+        );
+}
+
+.login-box{
+
+    width:100%;
+    max-width:420px;
+
+    padding:35px 28px;
+
+    border-radius:28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.11),
+            rgba(255,255,255,.035)
+        );
+
+    border:
+        1px solid rgba(255,255,255,.15);
+
+    backdrop-filter:blur(25px);
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.45);
+}
+
+.logo{
+
+    text-align:center;
+
+    font-size:45px;
+
+    margin-bottom:8px;
+}
+
+h1{
+
+    text-align:center;
+
+    font-size:32px;
+
+    margin-bottom:8px;
+}
+
+.subtitle{
+
+    text-align:center;
+
+    color:#aaa8b8;
+
+    margin-bottom:30px;
+}
+
+label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    color:#ddd6fe;
+
+    font-size:14px;
+}
+
+input{
+
+    width:100%;
+
+    padding:15px;
+
+    margin-bottom:20px;
+
+    border-radius:14px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.13);
+
+    outline:none;
+
+    color:white;
+
+    background:
+        rgba(0,0,0,.25);
+
+    font-size:16px;
+}
+
+input:focus{
+
+    border-color:#a855f7;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(168,85,247,.12);
+}
+
+button{
+
+    width:100%;
+
+    padding:16px;
+
+    border:0;
+
+    border-radius:50px;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #c026d3,
+            #ec4899
+        );
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 12px 35px
+        rgba(168,85,247,.30);
+}
+
+button:active{
+
+    transform:scale(.97);
+}
+
+.error{
+
+    display:none;
+
+    margin-bottom:18px;
+
+    padding:12px;
+
+    border-radius:12px;
+
+    text-align:center;
+
+    color:#fca5a5;
+
+    background:
+        rgba(239,68,68,.10);
+
+    border:
+        1px solid
+        rgba(239,68,68,.20);
+}
+
+.back{
+
+    display:block;
+
+    margin-top:22px;
+
+    text-align:center;
+
+    color:#a78bfa;
+
+    text-decoration:none;
+
+    font-size:14px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="login-box">
+
+
+    <div class="logo">
+        🔐
+    </div>
+
+
+    <h1>
+        Admin Login
+    </h1>
+
+
+    <p class="subtitle">
+        College Portal
+    </p>
+
+
+    <div
+        id="error"
+        class="error"
+    >
+        Incorrect email or password.
+    </div>
+
+
+    <form
+        id="loginForm"
+    >
+
+
+        <label for="email">
+            Email
+        </label>
+
+
+        <input
+            id="email"
+            type="email"
+            placeholder="Enter your email"
+            autocomplete="username"
+            required
+        >
+
+
+        <label for="password">
+            Password
+        </label>
+
+
+        <input
+            id="password"
+            type="password"
+            placeholder="Enter your password"
+            autocomplete="current-password"
+            required
+        >
+
+
+        <button type="submit">
+            Login →
+        </button>
+
+
+    </form>
+
+
+    <a
+        class="back"
+        href="index.html"
+    >
+        ← Back to Website
+    </a>
+
+
+</div>
+
+
+<script>
+
+/*
+==================================================
+SUPABASE CONNECTION
+==================================================
+
+IMPORTANT:
+
+YOUR_PROJECT_URL
+को अपने Supabase Project URL से बदलना है।
+
+YOUR_PUBLISHABLE_KEY
+को अपने Supabase Publishable Key से बदलना है।
+
+SECRET / SERVICE ROLE KEY यहां कभी मत डालना।
+*/
+
+
+const SUPABASE_URL =
+    "https://juxulvnnqyvgmttgkdsj.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_iT3pKj6z7BHYqOJEOax3HQ_uMNE9WDn";
+
+
+/*
+==================================================
+CREATE SUPABASE CLIENT
+==================================================
+*/
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+/*
+==================================================
+LOGIN
+==================================================
+*/
+
+document
+    .getElementById("loginForm")
+    .addEventListener(
+        "submit",
+        async function(event){
+
+            event.preventDefault();
+
+
+            const email =
+                document
+                .getElementById("email")
+                .value
+                .trim();
+
+
+            const password =
+                document
+                .getElementById("password")
+                .value;
+
+
+            const errorBox =
+                document
+                .getElementById("error");
+
+
+            errorBox.style.display =
+                "none";
+
+
+            /*
+            Supabase Authentication
+            */
+
+            const {
+                data,
+                error
+            } =
+            await supabaseClient.auth.signInWithPassword({
+
+                email:
+                    email,
+
+                password:
+                    password
+
+            });
+
+
+            /*
+            LOGIN FAILED
+            */
+
+            if(error){
+
+                errorBox.textContent =
+                    "Login failed. Please check your email and password.";
+
+                errorBox.style.display =
+                    "block";
+
+                return;
+            }
+
+
+            /*
+            LOGIN SUCCESS
+            */
+
+            if(data.session){
+
+                window.location.href =
+                    "edit.html";
+
+            }
+
+        }
+    );
+
+
+</script>
+
+
+</body>
+
+</html>

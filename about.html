@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About - College Portal</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    min-height:100vh;
+    color:white;
+
+    background:
+        radial-gradient(circle at 15% 20%,rgba(124,58,237,.30),transparent 32%),
+        radial-gradient(circle at 85% 75%,rgba(236,72,153,.20),transparent 32%),
+        linear-gradient(135deg,#050509,#100b1f,#050509);
+
+    overflow-x:hidden;
+}
+
+header{
+    text-align:center;
+    padding:80px 20px 50px;
+}
+
+.badge{
+    display:inline-block;
+    padding:9px 18px;
+    border-radius:50px;
+
+    color:#d8b4fe;
+
+    background:rgba(255,255,255,.07);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    letter-spacing:2px;
+    font-size:13px;
+
+    margin-bottom:25px;
+}
+
+h1{
+    font-size:clamp(50px,10vw,90px);
+    font-weight:800;
+    letter-spacing:2px;
+
+    text-shadow:
+        0 0 25px rgba(216,180,254,.25);
+}
+
+nav{
+    width:92%;
+    max-width:900px;
+
+    margin:auto;
+    padding:12px;
+
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:8px;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.14);
+
+    border-radius:50px;
+
+    backdrop-filter:blur(20px);
+}
+
+nav a{
+    color:#ddd6fe;
+
+    text-decoration:none;
+
+    padding:12px 20px;
+
+    border-radius:30px;
+
+    transition:.3s;
+}
+
+nav a:hover{
+    color:white;
+
+    background:rgba(139,92,246,.25);
+
+    transform:translateY(-3px);
+}
+
+main{
+    padding:70px 20px 90px;
+}
+
+.card{
+    max-width:850px;
+
+    margin:auto;
+
+    padding:60px 35px;
+
+    text-align:center;
+
+    border-radius:32px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.11),
+            rgba(255,255,255,.035)
+        );
+
+    border:
+        1px solid rgba(255,255,255,.15);
+
+    backdrop-filter:blur(25px);
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.40);
+
+    animation:appear .8s ease;
+}
+
+@keyframes appear{
+
+    from{
+        opacity:0;
+        transform:translateY(35px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+.card h2{
+    font-size:clamp(34px,6vw,52px);
+
+    margin-bottom:25px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #d8b4fe,
+            #f9a8d4
+        );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.card p{
+    color:#c9c5d4;
+
+    font-size:18px;
+
+    line-height:1.9;
+}
+
+footer{
+    text-align:center;
+
+    padding:35px;
+
+    color:#777384;
+
+    font-size:14px;
+}
+
+@media(max-width:650px){
+
+    h1{
+        font-size:52px;
+    }
+
+    nav{
+        border-radius:25px;
+    }
+
+    nav a{
+        padding:10px 14px;
+    }
+
+    .card{
+        padding:45px 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="badge">
+        ABOUT US
+    </div>
+
+    <h1>
+        Our College
+    </h1>
+
+</header>
+
+
+<nav>
+
+    <a href="index.html">
+        Home
+    </a>
+
+    <a href="about.html">
+        About
+    </a>
+
+    <a href="courses.html">
+        Courses
+    </a>
+
+    <a href="contact.html">
+        Contact
+    </a>
+
+</nav>
+
+
+<main>
+
+    <div class="card">
+
+        <h2 id="aboutTitle">
+            Learn. Grow. Succeed.
+        </h2>
+
+        <p id="aboutText">
+            We believe in quality education,
+            innovation and creating opportunities
+            for every student.
+        </p>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    © 2026 College Portal
+
+</footer>
+
+
+<script>
+
+const saved =
+    localStorage.getItem("collegeData");
+
+if(saved){
+
+    const data =
+        JSON.parse(saved);
+
+    document.getElementById(
+        "aboutTitle"
+    ).textContent =
+        data.aboutTitle;
+
+    document.getElementById(
+        "aboutText"
+    ).textContent =
+        data.aboutText;
+
+}
+
+</script>
+
+</body>
+</html>
